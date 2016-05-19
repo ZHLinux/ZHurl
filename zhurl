@@ -1,0 +1,44 @@
+#!/usr/bin/python
+#-*-coding:utf-8-*-
+
+import urllib
+import sys
+
+print """
+
+	+-------------------------------+
+	|                               |
+	|  ZHLinux source viewer v1.0   |
+	|                               |
+	|  http://facebook.com/ZHLinux  |
+	|                               |
+	+-------------------------------+
+
+
+	1) View source code
+	2) Create source file
+	
+"""
+
+while True:
+
+	emeliyyat=raw_input("Select  : ")
+	site=raw_input("\nSite : ")
+
+	html = urllib.urlopen("http://"+site)
+	if emeliyyat == "2":
+		sel=raw_input("\ntxt or html ? : ")
+		if sel=="txt":
+			source=open("source.txt","w")
+			source.write(html.read())
+			break
+		elif sel=="html":
+			source=open("source.html","w")
+			source.write(html.read())
+			break
+		else:
+			exit()
+	elif emeliyyat == "1":
+		print html.read()
+	else:
+		break
